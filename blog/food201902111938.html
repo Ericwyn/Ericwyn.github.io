@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Spring Boot使用Redis整合Spring Cache</title>
+    <title>一般青菜的烹饪</title>
     <meta name="viewport" content="width=device-width, initial-scale=0.9,  user-scalable=no">
     <link rel="stylesheet" href="/css/mdui.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -37,14 +37,14 @@
         <div class="mdui-card mdui-shadow-6 mdui-typo mdui-p-a-4 mdui-m-b-2">
             <div >
                 <h1 id="title" class="bold-font-weight">
-                    <!--标题所在-->Spring Boot使用Redis整合Spring Cache
+                    <!--标题所在-->一般青菜的烹饪
                 </h1>
                 <!--设置创建时间-->
                 <div class="mdui-typo-body-1 inline-display">
-                    创建时间 : <span id ="create" class="mdui-text-color-pink">2019-01-14 13:19</span>
+                    创建时间 : <span id ="create" class="mdui-text-color-pink">2019-02-11 19:36</span>
                 </div>
                 <div class="mdui-typo-body-1 mdui-m-l-3 inline-display">
-                    最后更新 : <span id ="lastUpdate" class="mdui-text-color-pink">2019-01-14 13:19</span>
+                    最后更新 : <span id ="lastUpdate" class="mdui-text-color-pink">2019-02-11 19:36</span>
                 </div>
             </div>
             <div class="mdui-typo mdui-m-t-1 mdui-m-b-1">
@@ -53,119 +53,44 @@
             <div id="mdContent" class="prettyprint">
                 <h2>前言</h2>
 
-<p>业务中要求在 Spring Boot 框架上使用缓存来提高数据加载速度，减少对数据库的访问，于是使用 Spring Cache 来作为 Spring Boot 的缓存。</p>
+<p>青菜的做法总是相似的，大概就是清水煮好，然后做些酱汁淋上去</p>
 
-<h2>一，加入依赖</h2>
-
-<p>由于需要使用 Redis，所以添加 Redis 的依赖是免不了的</p>
-
-<h3><code>pom.xml</code></h3>
-
-<pre><code>&lt;!--Spring redis--&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre>
-
-<h3>加入配置 <code>application.properties</code></h3>
-
-<pre><code>spring.redis.database=5
-spring.redis.host=127.0.0.1
-spring.redis.port=6379
-spring.redis.password=password
-# 旧版本 Spring Boot 中的 redis 配置
-# spring.redis.jedis.pool.max-wait=-1ms
-# spring.redis.jedis.pool.max-active=8
-# spring.redis.jedis.pool.max-idle=8
-# spring.redis.jedis.pool.min-idle=0
-spring.redis.timeout=10000ms
-
-# Spring Boot 2.0.3 默认使用 lettuce 链接 redis，配置要变成这样
-# 连接池最大连接数（使用负值表示没有限制） 默认 8
-spring.redis.lettuce.pool.max-active=8
-# 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
-spring.redis.lettuce.pool.max-wait=-1ms
-# 连接池中的最大空闲连接 默认 8
-spring.redis.lettuce.pool.max-idle=8
-# 连接池中的最小空闲连接 默认 0
-spring.redis.lettuce.pool.min-idle=0
-</code></pre>
-
-<h2>二，引入 Spring Cache</h2>
-
-<p>在启动类添加注解，以引入 Spring Cache</p>
-
-<pre><code>@SpringBootApplication
-@ServletComponentScan
-@EnableCaching
-public class FontainerApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(FontainerApplication.class, args);
-    }
-
-}
-</code></pre>
-
-<h2>三，配置 Cache 注解</h2>
-
-<p>Cache 注解主要有下面几个，参考 <a href="https://www.jianshu.com/p/fd950f65aec7">spring-boot-cache使用实战-简书</a> 当中的表格介绍</p>
-
-<pre><code>@Cacheable (存在缓存则直接返回,不存在则调用业务方法,保存到缓存)
-@CacheEvict (清楚缓存,可清楚cache里全部缓存)
-@CachePut (不管缓存存不存在,调用业务方法,将返回值set到缓存里面)
-</code></pre>
-
-<p>我的话主要是用的是 <code>@Cacheable</code> 和 <code>@CacheEvict</code>，注解的是位于 Service 的方法，其中</p>
+<h2>青菜的选购</h2>
 
 <ul>
-<li><code>@Cacheable</code> 注解各种查询的业务方法，缓存首次查询的结果，后续的方法的时候直接返回首次查询时候缓存的结果</li>
-<li><code>@CacheEvict</code> 注解各种插入的业务方法，因为一旦进行了插入，那么旧的缓存可能就会过期了，因此，使用该注解去清除由 <code>@Cacheable</code> 注解设置的缓存</li>
+<li>生菜
+
+<ul>
+<li>生菜的话感觉随便买就好了，只要不烂就可以了</li>
+</ul></li>
+<li>白菜
+
+<ul>
+<li>尽量选择那种小一点的白菜（嫩一点？），如果是那种很大颗的白菜的话就尽量不要买了，因为会有丝，口感不好难以吞下</li>
+</ul></li>
 </ul>
 
-<h3>代码示例</h3>
+<h2>清水煮菜</h2>
 
-<p>下面的代码是 Service 层的代码，负责 Product 这个对象的查询和插入</p>
+<p>一般的菜感觉都可以先清水煮，至于什么时候煮熟呢，我感觉大部分菜只要颜色变深，就大概可以关掉火了（不过青菜总是可以生吃的，所以感觉哪怕煮不熟也没什么关系）</p>
 
-<pre><code>@Service
-public class ProductService {
-    @Autowired
-    ProductRepository productRepository;
+<p>专门问了一下母上大人，是否要在煮的时候下盐？得到的回答是不需要，说下盐的话，煮了之后菜会变得韧。感觉是因为盐的存在让菜脱水？导致口感变差？</p>
 
-    @Cacheable(value = &quot;ProductService.listProduct&quot;)
-    public Page&lt;Product&gt; listProduct(int page, int size){
-        return productRepository.findAll(PageRequest.of(page, size));
-    }
+<p>清水煮完之后放到盘子上准备淋酱汁~</p>
 
-    // 使用 CacheEvict 注解，一旦插入的时候
-    @CacheEvict(value = &quot;ProductService.listProduct&quot;, allEntries = true)
-    public Product addProduct(String name, String intro, String price, String pic){
-        Product product = new Product();
-        product.setName(name);
-        product.setIntro(intro);
-        product.setPrice(price);
-        product.setPic(pic);
-        return productRepository.save(product);
-    }
+<h2>酱汁的制作</h2>
 
-}
-</code></pre>
+<p>酱汁是这道菜的灵魂，是这盘青菜煮了之后好不好吃的关键。而酱汁的制作，其基础感觉在于“炸香的蒜头”</p>
+
+<p>蒜头的香味会让普通的植物，升华成大部分人类都喜欢的食物。</p>
 
 <ul>
-<li><p><code>listProduct(int page, int size)</code>使用 <code>@Cacheable(value = &quot;ProductService.listProduct&quot;)</code>
-注解</p>
-
-<ul>
-<li>value 为 <code>ProductService.listProduct</code> 代表以这个名称来缓存其结果</li>
-<li>默认的话，缓存的 key 是该方法的入参，也就是当入参一样并且存在缓存的时候，会直接返回已缓存的结果，否则的话会执行一下数据库查询。</li>
-</ul></li>
-
-<li><p><code>addProduct(String name, String intro, String price, String pic)</code> 使用 <code>@CacheEvict(value = &quot;ProductService.listProduct&quot;, allEntries = true)</code> 注解</p>
-
-<ul>
-<li>CacheEvict 注解的 value 为 <code>ProductService.listProduct</code> 代表要执行该方法的时候，要清楚该名称的缓存，allEntries = true 则代表删除所有 key 的缓存。</li>
-</ul></li>
+<li>蒜头切碎</li>
+<li>倒油热锅（油并不用太多，大概够爆香蒜头就好了）</li>
+<li>放蒜头，等蒜头稍微变金黄的时候&hellip;</li>
+<li>未完待续&hellip;&hellip;</li>
+<li>（某天里老爸在这一步里加了一些生粉勾芡）</li>
+<li>制作完酱汁之后淋上去就好了</li>
 </ul>
 
                 <!-- markdown 转换成的 HTML 的存放地址-->
@@ -201,13 +126,13 @@ public class ProductService {
                 <div id="prePage" class="mdui-float-left text-align-left">
                     <p >< 上一篇</p>
                     <h3>
-                        <a href="/blog/food201902111938.html" class="mdui-text-color-black-text pre-next-title">一般青菜的烹饪</a>
+                        <a href="/blog/" class="mdui-text-color-black-text pre-next-title"></a>
                     </h3>
                 </div>
                 <div id="nextPage" class="mdui-float-right text-align-right">
                     <p >下一篇 ></p>
                     <h3>
-                        <a href="/blog/birth2018.html" class="mdui-text-color-black-text pre-next-title">烛影摇红 | 廿二岁生辰自题</a>
+                        <a href="/blog/spring-boot-with-spring-cache.html" class="mdui-text-color-black-text pre-next-title">Spring Boot使用Redis整合Spring Cache</a>
                     </h3>
                 </div>
             </div>
