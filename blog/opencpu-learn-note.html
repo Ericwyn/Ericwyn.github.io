@@ -260,11 +260,11 @@ sudo apt-get install -y rstudio-server
             }
         });
         // for 循环儿子节点，循环时候先打印，再递归
-        let count2 = numCount;
         console.log("外层"+numCount);
 
-        childList.forEach(function (child, index, arrayObj) {
-            console.log("内层"+count2);
+        for (let i = 0; i < childList.length; i++) {
+            let child = childList[i];
+            console.log("内层"+numCount);
             hList[hListIndex] = child;
             console.log(child.innerText);
             // 打印空格
@@ -277,7 +277,9 @@ sudo apt-get install -y rstudio-server
             hListIndex++;
             // 递归
             addMdNav(child, numCount+1);
-        });
+        }
+        console.log("外层2"+numCount);
+
     }
 
 </script>
