@@ -161,7 +161,6 @@
 
                 </div>
                 <div>
-                    <br>
                     <a onclick="gotoTop()">回到顶部</a>
                 </div>
             </div>
@@ -277,40 +276,37 @@
         document.body.scrollTop = 0
     }
     let mdContent = domId("mdContent");
-    addMdNav(mdContent, 0);
+    addMdNav(mdContent);
 
-    function addMdNav(dom, numCount) {
-        // 找出所有的儿子节点
-        let childList = [];
-        let childIndex = 0;
+    function addMdNav(dom) {
+        // 遍历找出最小的 H，以实现如果没有 H1的话 H2 就不缩进
+        let miniH = 5;
         dom.childNodes.forEach(function (node, index, listObj) {
             if (node.tagName !== undefined) {
                 if (node.tagName.startsWith("H")) {
-                    childList[childIndex++] = node;
+                    let hNumTemp = Number.parseInt(node.tagName.replace("H",""));
+                    if (hNumTemp < miniH){
+                        miniH = hNumTemp;
+                    }
                 }
             }
         });
-        // for 循环儿子节点，循环时候先打印，再递归
-        console.log("外层"+numCount);
-
-        for (let i = 0; i < childList.length; i++) {
-            let child = childList[i];
-            console.log("内层"+numCount);
-            hList[hListIndex] = child;
-            console.log(child.innerText);
-            // 打印空格
-            for (let j = 0; j < numCount; j++) {
-                console.log("打印了空格");
-                domId("mdNav").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;"
+        dom.childNodes.forEach(function (node, index, listObj) {
+            if (node.tagName !== undefined) {
+                if (node.tagName.startsWith("H")) {
+                    // childList[childIndex++] = node;
+                    hList[hListIndex] = node;
+                    let hNumTemp = Number.parseInt(node.tagName.replace("H",""));
+                    for (let j = 0; j < (hNumTemp - miniH); j++) {
+                        domId("mdNav").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;"
+                    }
+                    domId("mdNav").innerHTML +=`<a onclick="gotoH('${hListIndex++}')" >• ${node.innerText}</a></br>`;
+                }
             }
-            // 打印标签
-            domId("mdNav").innerHTML +=`<a onclick="gotoH('${hListIndex}')" >• ${child.innerText}</a></br>`;
-            hListIndex++;
-            // 递归
-            addMdNav(child, numCount+1);
+        });
+        if (domId("mdNav").innerHTML.trim() !== "") {
+            domId("mdNav").innerHTML += `<br>`;
         }
-        console.log("外层2"+numCount);
-
     }
 
 </script>
