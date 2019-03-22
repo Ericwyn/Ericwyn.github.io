@@ -6,6 +6,14 @@
 	"domain": "https://blog.meetwhy.com",
 	"articles": [
 		{
+			"title": "解压google 官方 ota 包获得 img 文件",
+			"tag": "Ubuntu 使用日常,Android",
+			"create": "2019-03-22 19:49",
+			"update": "2019-03-22 19:49",
+			"mini": " 前言 下载了一个 Pixel2 的官方 ota 包, 但是却不知道怎么解压出 system.img 那一堆东西, 搜了一下发现 github 上面已经有了这样的工具了, 但是却是用 python 写的, 用起来有点麻烦, 记录一下  https://github.com/cyxx/extract_android_ota_payload   git clone 下载两个文件     extract_android_ota_payload.py   update_metadata_pb2.py  ",
+			"link": "extract_android_ota_payload"
+		},
+		{
 			"title": "从零开始的微信支付接入（一）用户认证",
 			"tag": "且听秋谷,微信开发",
 			"create": "2019-02-24 12:36",
