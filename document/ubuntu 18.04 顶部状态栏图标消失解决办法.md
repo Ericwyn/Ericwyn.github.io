@@ -14,6 +14,7 @@ Ubuntu 18.04 从刚刚发布不久，我一直用到现在，原先由 Ubuntu 16
   https://askubuntu.com/questions/966987/indicator-icons-do-not-appear-after-upgrade-to-ubuntu-17-10
 
 和 
+
  > Why top panel icons disapear on Gnome after installing Unity?
  https://askubuntu.com/questions/1045301/why-top-panel-icons-disapear-on-gnome-after-installing-unity
 

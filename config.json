@@ -9,7 +9,7 @@
 			"title": "ubuntu 18.04 顶部状态栏图标消失解决办法",
 			"tag": "Ubuntu 使用日常",
 			"create": "2019-03-23 11:51",
-			"update": "2019-03-23 11:51",
+			"update": "2019-03-23 11:56",
 			"mini": " 前言 Ubuntu 18.04 从刚刚发布不久，我一直用到现在，原先由 Ubuntu 16.04 升级而来，一路当中用的还是挺舒畅的。但是有时候也有些小问题，其中一个困扰我很久的就是顶部状态栏有时候，ICON 可能会消失，例如 网易云音乐，微信，Seafile 等的 ICON 都没法显示。   简单解决方法   方法1，重启电脑或者注销在登录   方法2，重启 GNOME ，alt  f2,输入  r ，回车    正经的解决方法   方法1 参照    \u003eIndicator icons do",
 			"link": "ubuntu1804-gnome-top-panel-icons-disapear"
 		},
