@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>解压google 官方 ota 包获得 img 文件</title>
+    <title>ubuntu 18.04 顶部状态栏图标消失解决办法</title>
     <meta name="viewport" content="width=device-width, initial-scale=0.9,  user-scalable=no">
     <link rel="stylesheet" href="/css/mdui.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -45,14 +45,14 @@
             <div class="mdui-card mdui-shadow-6 mdui-typo mdui-p-a-4 mdui-m-b-2">
                 <div >
                     <h1 id="title" class="bold-font-weight">
-                        <!--标题所在-->解压google 官方 ota 包获得 img 文件
+                        <!--标题所在-->ubuntu 18.04 顶部状态栏图标消失解决办法
                     </h1>
                     <!--设置创建时间-->
                     <div class="mdui-typo-body-1 inline-display">
-                        创建时间 : <span id ="create" class="mdui-text-color-pink">2019-03-22 19:49</span>
+                        创建时间 : <span id ="create" class="mdui-text-color-pink">2019-03-23 11:51</span>
                     </div>
                     <div class="mdui-typo-body-1 mdui-m-l-3 inline-display">
-                        最后更新 : <span id ="lastUpdate" class="mdui-text-color-pink">2019-03-22 19:49</span>
+                        最后更新 : <span id ="lastUpdate" class="mdui-text-color-pink">2019-03-23 11:51</span>
                     </div>
                 </div>
                 <div class="mdui-typo mdui-m-t-1 mdui-m-b-1">
@@ -61,37 +61,45 @@
                 <div id="mdContent" class="prettyprint">
                 <h2>前言</h2>
 
-<p>下载了一个 Pixel2 的官方 ota 包, 但是却不知道怎么解压出 system.img 那一堆东西, 搜了一下发现 github 上面已经有了这样的工具了, 但是却是用 python 写的, 用起来有点麻烦, 记录一下</p>
+<p>Ubuntu 18.04 从刚刚发布不久，我一直用到现在，原先由 Ubuntu 16.04 升级而来，一路当中用的还是挺舒畅的。但是有时候也有些小问题，其中一个困扰我很久的就是顶部状态栏有时候，ICON 可能会消失，例如 网易云音乐，微信，Seafile 等的 ICON 都没法显示。</p>
 
-<p><a href="https://github.com/cyxx/extract_android_ota_payload">https://github.com/cyxx/extract_android_ota_payload</a></p>
-
-<h2>git clone</h2>
-
-<p>下载两个文件</p>
+<h2>简单解决方法</h2>
 
 <ul>
-<li>extract_android_ota_payload.py</li>
-<li>update_metadata_pb2.py</li>
+<li>方法1，重启电脑或者注销在登录</li>
+<li>方法2，重启 GNOME ，<code>alt + f2</code>,输入  <code>r</code> ，回车</li>
 </ul>
 
-<h2>添加依赖</h2>
+<h2>正经的解决方法</h2>
 
-<pre><code>pip install protobuf
+<h3>方法1</h3>
+
+<p>参照</p>
+
+<blockquote>
+<p>Indicator icons do not appear after upgrade to Ubuntu 17.10
+  <a href="https://askubuntu.com/questions/966987/indicator-icons-do-not-appear-after-upgrade-to-ubuntu-17-10">https://askubuntu.com/questions/966987/indicator-icons-do-not-appear-after-upgrade-to-ubuntu-17-10</a></p>
+</blockquote>
+
+<p>和
+ &gt; Why top panel icons disapear on Gnome after installing Unity?
+ <a href="https://askubuntu.com/questions/1045301/why-top-panel-icons-disapear-on-gnome-after-installing-unity">https://askubuntu.com/questions/1045301/why-top-panel-icons-disapear-on-gnome-after-installing-unity</a></p>
+
+<p>里面提到可能是 Unity 遗留了一些文件导致出现了冲突，直接运行</p>
+
+<pre><code>sudo apt remove indicator-application
 </code></pre>
 
-<p>注意: 如果提示 pip 不存在的话, ubuntu 直接先安装 pip 就行了</p>
+<p>然后重启就好了。</p>
 
-<pre><code>sudo apt install python-pip
+<h3>方法2</h3>
+
+<p>有可能是你的装了什么 GNOME 拓展导致 ICON 无法显示，chrome 打开</p>
+
+<pre><code>https://extensions.gnome.org/local/
 </code></pre>
 
-<h2>解压</h2>
-
-<pre><code>python extract_android_ota_payload.py walleye-ota-pq2a.190205.002-f8793f98.zip tmp/
-</code></pre>
-
-<p>这样就可以了</p>
-
-<p>py 用起来还是有点麻烦, 必须先安装环境, 或者什么时候考虑用 go 写一个解压软件吧</p>
+<p>查看自己安装的拓展，禁用掉一些 Error 或者是与状态栏相关的拓展试试</p>
 
                     <!-- markdown 转换成的 HTML 的存放地址-->
                 </div>
@@ -126,13 +134,13 @@
                     <div id="prePage" class="mdui-float-left text-align-left">
                         <p >< 上一篇</p>
                         <h3>
-                            <a href="/blog/ubuntu1804-gnome-top-panel-icons-disapear.html" class="mdui-text-color-black-text pre-next-title">ubuntu 18.04 顶部状态栏图标消失解决办法</a>
+                            <a href="/blog/" class="mdui-text-color-black-text pre-next-title"></a>
                         </h3>
                     </div>
                     <div id="nextPage" class="mdui-float-right text-align-right">
                         <p >下一篇 ></p>
                         <h3>
-                            <a href="/blog/wxpay-start.html" class="mdui-text-color-black-text pre-next-title">从零开始的微信支付接入（一）用户认证</a>
+                            <a href="/blog/extract_android_ota_payload.html" class="mdui-text-color-black-text pre-next-title">解压google 官方 ota 包获得 img 文件</a>
                         </h3>
                     </div>
                 </div>
