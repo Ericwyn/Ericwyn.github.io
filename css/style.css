@@ -42,8 +42,18 @@ table tr:nth-child(even) {
     background: #fafcf8;
 }
 
+.customer-color-theme {
+    background-color: #424242 !important;
+    color: #fff!important;
+}
+
+.customer-color-text {
+    color: #212121 !important;
+}
+
 .blog-pages-header{
     width: 100%; min-height: 35%;z-index: -1;position: absolute;
+    background-color: #424242 !important;
 }
 
 .bold-font-weight{
@@ -81,8 +91,9 @@ table tr:nth-child(even) {
 
 .navigation-bar-header{
     min-height: 250px;
-    height: 30%;
-    background: #3F51B5 url('../img/brand.png');
+    height: 35%;
+    /*background: #3F51B5 url('../img/brand.png');*/
+    background: #424242;
 }
 
 .none-text-transform{
@@ -100,6 +111,8 @@ table tr:nth-child(even) {
     padding-left: 15px;
     padding-right: 15px;
     font-size: 20px;
+    background-color: #424242 !important;
+    color: #fff;
 }
 
 .index-blog-card {

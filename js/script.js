@@ -18,7 +18,7 @@ function bindIndexArticleCard(article) {
         `<div class="mdui-card mdui-typo mdui-m-t-2 mdui-m-b-2 mdui-hoverable index-blog-card gradient-wrapper">
         <div class="mdui-card-primary">
             <div class="mdui-card-primary-title ">
-                <a href="blog/${article.link}.html" target="_blank">${article.title}</a>
+                <a href="blog/${article.link}.html" class="customer-color-text" target="_blank">${article.title}</a>
             </div>
             <div class="mdui-card-primary-subtitle">${article.create}</div>
         </div>
@@ -61,7 +61,7 @@ function bindArticleTags(tags,randomColor) {
             colorClass = colors[(ran+i)%colors.length];
         }
         tagHtml +=
-            `<div class="mdui-chip ${colorClass} mdui-m-x-1 none-text-transform mdui-text-color-white blog-tag" onclick="gotoTagPage('${temp[i]}')">
+            `<div class="mdui-chip mdui-m-x-1 none-text-transform mdui-text-color-white blog-tag" onclick="gotoTagPage('${temp[i]}')">
                 <span class="mdui-chip-title">${temp[i]}</span>
             </div>`
     }
@@ -74,7 +74,7 @@ function bindArchiveArticle(article){
             <div class="mdui-card mdui-typo">
                 <div class="mdui-p-x-2">
                     <h4 class="mdui-typo">
-                        <a href="/blog/${article.link}.html">${article.title}</a>
+                        <a href="/blog/${article.link}.html" class="customer-color-text">${article.title}</a>
                     </h4>
                     <div class="mdui-card-primary-subtitle">${article.create}</div>
                 </div>
